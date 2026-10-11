@@ -1,0 +1,14 @@
+learn-github-actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on:
+      group: ubuntu-runners
+      labels: ubuntu-24.04-16core
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
